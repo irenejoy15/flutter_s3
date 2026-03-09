@@ -13,7 +13,10 @@ exports.getAllBanners = async (event) => {
                 body: JSON.stringify({error: 'No banners found'}),
             }
         }
-        const banners = Items.map(item => item.imageUrl.S);
+        // const banners = Items.map(item => item.imageUrl.S);
+        const banners = Items.map(item => ({
+            imageUrl: item.imageUrl.S,
+        }));
         return {
             statusCode: 200,
             body: JSON.stringify({banners}),
