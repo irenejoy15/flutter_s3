@@ -9,6 +9,7 @@ provider:
   region: us-east-1
   environment:
     BUCKET_NAME: banner-images-ads-irenejoy21-dev-12-new 
+    DYNAMODB_TABLE: Banners
   iamRoleStatements:
     - Effect: 'Allow'
       Action:
