@@ -16,6 +16,11 @@ provider:
         - 's3:PutObject'
       Resource: 
         - arn:aws:s3:::banner-images-ads-irenejoy21-dev-12-new/*
+    - Effect: 'Allow'
+      Action:
+        - dynamodb:PutItem
+      Resource: 
+        - arn:aws:dynamodb:us-east-1:660880134927:table/Banners
 
   # Uncomment to easily set up a custom domain. Read the docs for more details:
   # https://www.serverless.com/framework/docs/providers/aws/guide/domains
@@ -46,3 +51,10 @@ functions:
       - httpApi:
           path: /upload.banner
           method: post
+  confirmUpload:
+    handler: handlers/confirmUpload.confirmUpload
+    events:
+      - s3:
+          bucket: banner-images-ads-irenejoy21-dev-12-new 
+          event: s3:ObjectCreated:Put
+          existing: true
