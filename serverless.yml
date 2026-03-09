@@ -19,6 +19,7 @@ provider:
     - Effect: 'Allow'
       Action:
         - dynamodb:PutItem
+        - dynamodb:Scan
       Resource: 
         - arn:aws:dynamodb:us-east-1:660880134927:table/Banners
 
@@ -58,3 +59,9 @@ functions:
           bucket: banner-images-ads-irenejoy21-dev-12-new 
           event: s3:ObjectCreated:Put
           existing: true
+  getAllBanners:
+    handler: handlers/getAllBanners.getAllBanners
+    events:
+      - httpApi:
+          path: /ads
+          method: get
