@@ -19,7 +19,7 @@ exports.getAllBanners = async (event) => {
         }));
         return {
             statusCode: 200,
-            body: JSON.stringify({banners}),
+            body: JSON.stringify(banners),
         }
     }catch(error){
         console.error('Error fetching banners:', error);
